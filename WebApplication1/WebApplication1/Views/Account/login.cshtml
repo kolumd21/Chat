@@ -1,0 +1,19 @@
+﻿<div class="window_wrapper">
+    <div class="window">
+        <h2>Авторизация</h2>
+        <form method="post" asp-controller="Account" asp-action="Login">
+            <div class="mail">
+                <label name="email">Email</label>
+                <input type="text" name="email">
+            </div>
+            <div class="pass">
+                <label name="password">Пароль</label>
+                <input type="text" name="password">
+            </div>
+            <div class="btn">
+                <a href="/Account/register">Регистрация</a>
+                <button>Войти</button>
+            </div>
+        </form>
+    </div>
+</div>

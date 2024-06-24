@@ -1,0 +1,359 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    background-color: #2e2e2e;
+    font-family: 'Roboto', sans-serif;
+}
+p{
+    margin-bottom:0;
+}
+
+main {
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+    margin: 0 auto;
+    background-color: #181818;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: calc(100vh - 66px);
+}
+
+.messages {
+    width: 100%;
+    height: 90%;
+    background-color: #272727;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px 0;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #8080805e #00000000;
+}
+    .messages > :first-child{
+        margin-top:auto;
+    }
+
+    .send_message {
+        height: 10%;
+        display: flex;
+        margin-top: 10px;
+        gap: 2%;
+    }
+
+.name {
+    color: white;
+    font-size: 16px;
+}
+
+.message {
+    color: #d3d3d3;
+    font-size: 14px;
+}
+
+.wrapp_message {
+    padding: 5px 10px;
+    min-width: 60px;
+    border-radius: 12px 0 12px 12px;
+    background-color: #4260b3;
+}
+
+.wrapp {
+    display: flex;
+    align-items: flex-start;
+}
+
+    .wrapp svg {
+        margin-left: -1px;
+    }
+
+.send_message input {
+    height: 30px;
+    border-radius: 100px;
+    font-size: 18px;
+    padding-left: 15px;
+    width: 83%;
+    border: 2px solid #272727;
+    outline: none;
+}
+
+    .send_message input:focus {
+        border: 2px solid #4e72d5;
+    }
+
+.send {
+    width: 15%;
+    height: 34px;
+    border-radius: 30px;
+    border: 1px solid #4e72d5;
+    background-color: #4e72d5;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+    .send:hover {
+        border: 1px solid #4565c0;
+        background-color: #4565c0;
+    }
+
+    .send:active {
+        background-color: #6286e6;
+    }
+
+.header {
+    width: 90vw;
+    height: 66px;
+    background-color: #232323;
+}
+
+.window_wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window {
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+}
+
+    .window h2 {
+        text-align: center;
+        color: white;
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .window form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+label {
+    color: rgb(208, 208, 208);
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.mail, .pass, .log {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input {
+    width: 350px;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 40px;
+    padding-left: 20px;
+    background: rgb(255 255 255 / 8%);
+    border: 1px solid rgb(255 255 255 / 8%);
+    color: white;
+    outline: none;
+}
+
+    form input:focus {
+        border: 1px solid rgb(145, 145, 145);
+    }
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+    .btn button {
+        height: 45px;
+        width: 130px;
+        border-radius: 50px;
+        border: 1px solid rgb(255 255 255 / 8%);
+        color: white;
+        background: rgb(255 255 255 / 8%);
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+.btn_reg {
+    width: 150px !important;
+}
+
+.btn button:hover {
+    border: 1px solid rgb(145, 145, 145);
+}
+
+.chat_wrapper{
+    display:flex;
+}
+.groups{
+    width:25%;
+    padding-left:5px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.group {
+    border-radius: 15px;
+    display: flex;
+    gap:10px;
+    padding: 10px;
+    cursor:pointer;
+}
+.image_group {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    background-color: gray;
+    background-size: contain;
+    overflow:hidden;
+}
+.image_group img{
+    height:100%;
+}
+.text_group{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    color:white;
+    height:50px;
+}
+.text_group h2{
+    font-size:22px;
+    margin-bottom:0px;
+}
+    .text_group p {
+        font-size:14px;
+        color: #bebebe;
+    }
+.group:hover {
+    background:#4e72d5;
+}
+.active {
+    background: #4e72d5;
+}
+
+
+
+
+
+    /*BURGER*/
+    /* скрываем чекбокс */
+    #menu__toggle {
+        opacity: 0;
+    }
+/* стилизуем кнопку */
+.menu__btn {
+    display: flex; /* используем flex для центрирования содержимого */
+    align-items: center; /* центрируем содержимое кнопки */
+    position: fixed;
+    top: 20px;
+    right: calc(20px + 5vw);
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+    /* добавляем "гамбургер" */
+    .menu__btn > span,
+    .menu__btn > span::before,
+    .menu__btn > span::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #d7d7d7;
+    }
+
+        .menu__btn > span::before {
+            content: '';
+            top: -8px;
+        }
+
+        .menu__btn > span::after {
+            content: '';
+            top: 8px;
+        }
+/* контейнер меню */
+.menu__box {
+    border-radius: 10px;
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 50px;
+    right: calc(50px + 5vw);
+    width: 200px;
+    height: 10%;
+    margin: 0;
+    list-style: none;
+    text-align: left;
+    background-color: #272727;
+}
+/* элементы меню */
+.menu__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    color: #db1414;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.first {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.menu__item:hover {
+    background-color: #2e2e2e;
+}
+
+#menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+}
+
+    #menu__toggle:checked ~ .menu__btn > span::before {
+        top: 0;
+        transform: rotate(0);
+    }
+
+    #menu__toggle:checked ~ .menu__btn > span::after {
+        top: 0;
+        transform: rotate(90deg);
+    }
+
+#menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    right: calc(50px + 5vw);
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    transition-duration: .25s;
+}

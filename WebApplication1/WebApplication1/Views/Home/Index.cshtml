@@ -1,0 +1,95 @@
+﻿@model ChatModel;
+@{
+    ViewBag.Title = "Index";
+}
+    <main>
+    <div class="header">
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <ul class="menu__box">
+                <li>
+                    <a class="menu__item first" asp-action="Logout" asp-controller="Account">
+                        <svg width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
+                            <g fill="#db1414">
+                                <path d="M1 8a6 6 0 018.514-5.45.75.75 0 01-.629 1.363 4.5 4.5 0 100 8.175.75.75 0 11.63 1.361A6 6 0 011 8z" />
+                                <path d="M11.245 4.695a.75.75 0 00-.05 1.06l1.36 1.495H6.75a.75.75 0 000 1.5h5.805l-1.36 1.495a.75.75 0 001.11 1.01l2.5-2.75a.748.748 0 00-.002-1.012l-2.498-2.748a.75.75 0 00-1.06-.05z" />
+                            </g>
+                        </svg>
+                        Покинуть чат
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="chat_wrapper">
+        <section class="groups">
+            @if(Model.groups != null)
+            {
+                @foreach(var grop in Model.groups)
+                {
+                    <div class="group" id="@("group"+grop.id_group)">
+                        <div class="image_group">
+                            <img src="/image/monkey.jpg" />
+                        </div>
+                        <div class="text_group">
+                            <h2>Название</h2>
+                            <p>Сообщение</p>
+                        </div>
+                    </div>
+                }
+            }
+        </section>
+        <section class="chat">
+            <div class="messages" id="messagesList">
+                @if (Model.messages != null)
+                {
+                    @foreach (var message in Model.messages)
+                    {
+                        <div class="wrapp">
+                            <div class="wrapp_message">
+                                <span class="name">@message.UserName</span>
+                                <p class="message">@message.Message</p>
+                            </div>
+                            <svg width="10" height="8" viewBox="0 0 50 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M49.5 1H1V42.5C1 24.1 33.3333 7.16667 49.5 1Z" fill="#4260b3" stroke="#4260b3" />
+                            </svg>
+                        </div>
+                    }
+                }
+            </div>
+            <form class="send_message" >
+                <input type="text" id="messageInput" name="message">
+                <button class="send" id="sendButton">Отправить</button>
+            </form>
+        </section>
+    </div>
+    
+
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+<script>
+    function scroll() {
+        let chat = document.getElementById('messagesList');
+        chat.scrollTop = chat.scrollHeight;
+    }
+    document.addEventListener("DOMContentLoaded", scroll());
+        var grops = document.querySelectorAll('group');
+        var id;
+        Array.from(grops).forEach(function (group) {
+            group.classList.remove('active');
+            group.addEventListener('click', function (e) {
+                id = e.id;
+                e.classList.Add('active');
+            });
+        });
+    const btn = document.getElementById('messageInput');
+    btn.addEventListener('click', function () {
+        var message = document.getElementById('messageInput').value;
+        connection.invoke("SendMessage", message, id).catch(function (err) {
+            return console.error(err.toString());
+        });
+    });
+</script>
